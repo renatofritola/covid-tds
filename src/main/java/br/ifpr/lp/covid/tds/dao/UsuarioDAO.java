@@ -21,7 +21,7 @@ public class UsuarioDAO {
     public void inserirUsuario(Usuario usuario) throws Exception {
         
             Connection anConnection = Conexao.getInstance().getConnection();
-            String sql = " INSERT INTO usuario (nome, senha, perfil) VALUES ( ?, ?) ";
+            String sql = " INSERT INTO usuario (nome, senha, perfil) VALUES ( ?, ?, ?) ";
             PreparedStatement pstm = anConnection.prepareStatement(sql);
             pstm.setString(1, usuario.getNome());
             pstm.setString(2, usuario.getSenha());
