@@ -29,14 +29,18 @@ public class DadosCovid extends javax.swing.JFrame {
         CovidService service = new CovidService();
         DadosPais dados =  service.getDadosCovidBrasil();
         
-        lbData.setText(sdf.format(dados.getDataAtualizacao()));
-        lbNovasMortes.setText(numberFormat.format(dados.getNovasMortes()));
-        lbNovosCasos.setText(numberFormat.format(dados.getNovosCasos()));
-        lbNovosRecuperados.setText(numberFormat.format(dados.getNovosRecuperados()));
-        lbPais.setText(dados.getPais());
-        lbTotalCasos.setText(numberFormat.format(dados.getTotalDeCasos()));
-        lbTotalMortes.setText(numberFormat.format(dados.getTotalMorte()));
-        lbTotalRecuperados.setText(numberFormat.format(dados.getTotalRecuperados()));
+        if (dados != null){
+            
+            lbData.setText(dados.getDataAtualizacao() != null ? sdf.format(dados.getDataAtualizacao()) : "");
+            lbNovasMortes.setText(numberFormat.format(dados.getNovasMortes()));
+            lbNovosCasos.setText(numberFormat.format(dados.getNovosCasos()));
+            lbNovosRecuperados.setText(numberFormat.format(dados.getNovosRecuperados()));
+            lbPais.setText(dados.getPais());
+            lbTotalCasos.setText(numberFormat.format(dados.getTotalDeCasos()));
+            lbTotalMortes.setText(numberFormat.format(dados.getTotalMorte()));
+            lbTotalRecuperados.setText(numberFormat.format(dados.getTotalRecuperados()));
+
+        }
         
     }
 
