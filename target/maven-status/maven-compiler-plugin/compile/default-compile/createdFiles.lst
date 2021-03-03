@@ -1,0 +1,9 @@
+br\ifpr\lp\covid\tds\main\Login$1.class
+br\ifpr\lp\covid\tds\service\CovidService.class
+br\ifpr\lp\covid\tds\main\DadosCovid.class
+br\ifpr\lp\covid\tds\main\Login$2.class
+br\ifpr\lp\covid\tds\model\Usuario.class
+br\ifpr\lp\covid\tds\dao\UsuarioDAO.class
+br\ifpr\lp\covid\tds\main\Login.class
+br\ifpr\lp\covid\tds\dao\Conexao.class
+br\ifpr\lp\covid\tds\model\DadosPais.class
