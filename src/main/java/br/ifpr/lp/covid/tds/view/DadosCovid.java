@@ -39,13 +39,13 @@ public class DadosCovid extends javax.swing.JFrame {
         if (dados != null){
             
             lbData.setText(dados.getDataAtualizacao() != null ? sdf.format(dados.getDataAtualizacao()) : "");
-            lbNovasMortes.setText(numberFormat.format(dados.getNovasMortes()));
-            lbNovosCasos.setText(numberFormat.format(dados.getNovosCasos()));
-            lbNovosRecuperados.setText(numberFormat.format(dados.getNovosRecuperados()));
+            lbNovasMortes.setText(dados.getNovasMortes() != null ? numberFormat.format(dados.getNovasMortes()) : "");
+            lbNovosCasos.setText(dados.getNovosCasos() != null ? numberFormat.format(dados.getNovosCasos()) : "");
+            lbNovosRecuperados.setText(dados.getNovosRecuperados() != null ? numberFormat.format(dados.getNovosRecuperados()) : "");
             lbPais.setText(dados.getPais());
-            lbTotalCasos.setText(numberFormat.format(dados.getTotalDeCasos()));
-            lbTotalMortes.setText(numberFormat.format(dados.getTotalMorte()));
-            lbTotalRecuperados.setText(numberFormat.format(dados.getTotalRecuperados()));
+            lbTotalCasos.setText(dados.getTotalDeCasos() != null ? numberFormat.format(dados.getTotalDeCasos()) : "");
+            lbTotalMortes.setText(dados.getTotalMorte() != null ? numberFormat.format(dados.getTotalMorte()) : "");
+            lbTotalRecuperados.setText(dados.getTotalRecuperados() != null ? numberFormat.format(dados.getTotalRecuperados()) : "");
 
         }
         

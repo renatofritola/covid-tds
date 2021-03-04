@@ -66,7 +66,9 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setText("Usuário");
         jPanel3.add(jLabel2);
 
-        jtfNome.setBackground(new java.awt.Color(153, 153, 153));
+        jtfNome.setBackground(new java.awt.Color(102, 102, 102));
+        jtfNome.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jtfNome.setForeground(new java.awt.Color(255, 255, 255));
         jtfNome.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         jPanel3.add(jtfNome);
 
@@ -74,7 +76,9 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setText("Senha");
         jPanel3.add(jLabel3);
 
-        jpfSenha.setBackground(new java.awt.Color(153, 153, 153));
+        jpfSenha.setBackground(new java.awt.Color(102, 102, 102));
+        jpfSenha.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jpfSenha.setForeground(new java.awt.Color(255, 255, 255));
         jpfSenha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         jPanel3.add(jpfSenha);
 

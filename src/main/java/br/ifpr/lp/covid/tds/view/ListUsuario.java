@@ -90,11 +90,15 @@ public class ListUsuario extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
+        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
         jPanel2.setLayout(new java.awt.BorderLayout());
 
+        jTableUsuarios.setBackground(new java.awt.Color(204, 204, 204));
         jTableUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -112,9 +116,12 @@ public class ListUsuario extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, java.awt.BorderLayout.CENTER);
 
+        jPanel3.setBackground(new java.awt.Color(51, 51, 51));
         jPanel3.setMinimumSize(new java.awt.Dimension(100, 40));
         jPanel3.setPreferredSize(new java.awt.Dimension(480, 40));
-        jPanel3.setLayout(new java.awt.GridLayout());
+        jPanel3.setLayout(new java.awt.GridLayout(1, 0));
+
+        jPanel4.setBackground(new java.awt.Color(51, 51, 51));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -128,6 +135,8 @@ public class ListUsuario extends javax.swing.JFrame {
         );
 
         jPanel3.add(jPanel4);
+
+        jPanel5.setBackground(new java.awt.Color(51, 51, 51));
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
