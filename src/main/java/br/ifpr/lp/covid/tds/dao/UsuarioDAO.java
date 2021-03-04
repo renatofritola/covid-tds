@@ -30,6 +30,19 @@ public class UsuarioDAO {
      
     }
     
+    public void atualizarUsuario(Usuario usuario) throws Exception {
+        
+            Connection anConnection = Conexao.getInstance().getConnection();
+            String sql = " UPDATE usuario set nome = ?, senha = ?, perfil = ? where id = ? ";
+            PreparedStatement pstm = anConnection.prepareStatement(sql);
+            pstm.setString(1, usuario.getNome());
+            pstm.setString(2, usuario.getSenha());
+            pstm.setString(3, usuario.getPerfil());
+            pstm.setLong(4, usuario.getId());
+            pstm.execute();
+     
+    }
+    
     public void removerUsuario(Long id) throws Exception {
         
             Connection anConnection = Conexao.getInstance().getConnection();
@@ -88,13 +101,12 @@ public class UsuarioDAO {
         Connection anConnection = Conexao.getInstance().getConnection();
         String sql = " SELECT * FROM usuario ";
         PreparedStatement pstm = anConnection.prepareStatement(sql);
-        ResultSet rs = pstm.executeQuery(sql);
+        ResultSet rs = pstm.executeQuery();
 
         List<Usuario> usuarios = new ArrayList<>();
 
-        Usuario usuario = new Usuario();
-
         while(rs.next()){
+            Usuario usuario = new Usuario();
             usuario.setId(rs.getLong("id"));
             usuario.setNome(rs.getString("nome"));
             usuario.setSenha(rs.getString("senha"));

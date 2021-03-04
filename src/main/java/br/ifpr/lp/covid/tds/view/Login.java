@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.ifpr.lp.covid.tds.main;
+package br.ifpr.lp.covid.tds.view;
 
-import br.ifpr.lp.covid.tds.dao.UsuarioDAO;
-import br.ifpr.lp.covid.tds.model.Usuario;
+import br.ifpr.lp.covid.tds.controller.LoginController;
 import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -47,8 +46,8 @@ public class Login extends javax.swing.JFrame {
         lbMensagem = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Dados Covid");
         setBackground(new java.awt.Color(51, 51, 51));
-        setUndecorated(true);
         setResizable(false);
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
@@ -68,6 +67,7 @@ public class Login extends javax.swing.JFrame {
         jPanel3.add(jLabel2);
 
         jtfNome.setBackground(new java.awt.Color(153, 153, 153));
+        jtfNome.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         jPanel3.add(jtfNome);
 
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -75,10 +75,13 @@ public class Login extends javax.swing.JFrame {
         jPanel3.add(jLabel3);
 
         jpfSenha.setBackground(new java.awt.Color(153, 153, 153));
+        jpfSenha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         jPanel3.add(jpfSenha);
 
         jButton1.setBackground(new java.awt.Color(0, 153, 153));
         jButton1.setText("Login");
+        jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -94,7 +97,7 @@ public class Login extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 508, Short.MAX_VALUE)
+            .addGap(0, 502, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -108,14 +111,14 @@ public class Login extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 257, Short.MAX_VALUE)
+            .addGap(0, 263, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                     .addComponent(pnlMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap()))
         );
@@ -128,7 +131,7 @@ public class Login extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
         try {
-            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            LoginController loginController = new LoginController();
             
             if (jtfNome.getText().isBlank()){
                 lbMensagem.setText("Nome do usuário deve ser informado!");
@@ -145,21 +148,14 @@ public class Login extends javax.swing.JFrame {
                 pnlMensagem.repaint();
                 return;
             }
-                
-            Usuario usuario = usuarioDAO.listarUsuarioPorNome(jtfNome.getText());
             
-            if (usuario == null){
-                lbMensagem.setText("Usuário "+jtfNome.getText()+" não cadastrado!");
+            try{
+                loginController.login(jtfNome.getText(), new String (jpfSenha.getPassword()));
+            }catch(Exception e){
+                lbMensagem.setText(e.getMessage());
                 pnlMensagem.setBackground(Color.red);
                 pnlMensagem.repaint();
                 return;
-            }else{
-                if (!new String (jpfSenha.getPassword()).equals(usuario.getSenha())){
-                    lbMensagem.setText("Senha do usuário está errada!");
-                    pnlMensagem.setBackground(Color.red);
-                    pnlMensagem.repaint();
-                    return;
-                }
             }
             
             lbMensagem.setText("Login efetuado com sucesso!");

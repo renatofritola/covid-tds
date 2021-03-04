@@ -11,7 +11,7 @@ package br.ifpr.lp.covid.tds.model;
  */
 public class Usuario {
  
-    private long id;
+    private Long id;
     
     private String nome;
     
@@ -19,11 +19,11 @@ public class Usuario {
     
     private String perfil;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
